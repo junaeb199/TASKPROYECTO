@@ -14,6 +14,7 @@ export function useTareas() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState(null)
 
+  // al montar: si ya habia tareas guardadas las cargo, sino voy a la api
   useEffect(() => {
     const guardadas = localStorage.getItem(CLAVE_LS)
     if (guardadas) {
@@ -27,6 +28,7 @@ export function useTareas() {
       .finally(() => setCargando(false))
   }, [])
 
+  // cada vez que cambian las tareas las guardo en localStorage
   useEffect(() => {
     if (!cargando) {
       localStorage.setItem(CLAVE_LS, JSON.stringify(tareas))
@@ -36,6 +38,7 @@ export function useTareas() {
   async function agregarTarea(titulo) {
     try {
       const nueva = await crearTarea(titulo)
+      // jsonplaceholder no guarda de verdad, le pongo un id unico local
       setTareas((prev) => [{ ...nueva, id: Date.now() }, ...prev])
     } catch (err) {
       setError(err.message)

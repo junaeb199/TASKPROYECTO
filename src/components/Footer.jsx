@@ -1,7 +1,8 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>TaskCampus &copy; {new Date().getFullYear()} &mdash; Gestión de tareas académicas</p>
+      <p>TaskCampus &mdash; Isadora &mdash; Ingenieria Civil Informatica</p>
+      <p className="footer-sub">Aplicaciones y Tecnologias de la Web &copy; {new Date().getFullYear()}</p>
     </footer>
   )
 }

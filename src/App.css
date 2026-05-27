@@ -410,6 +410,51 @@ body {
 }
 
 /* ===================================================
+   Apuntes rapidos
+   =================================================== */
+.apuntes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.apuntes-header .section-title {
+  margin-bottom: 0;
+}
+
+.apuntes-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  background-color: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 100px;
+}
+
+.apuntes-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.apuntes-hint {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+}
+
+/* ===================================================
    Footer
    =================================================== */
 .footer {
@@ -419,6 +464,12 @@ body {
   border-top: 1px solid #bfdbfe;
   color: #94a3b8;
   font-size: 0.82rem;
+}
+
+.footer-sub {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: #bfdbfe;
 }
 
 /* ===================================================

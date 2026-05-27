@@ -3,36 +3,35 @@ import Header from './components/Header'
 import TaskSummary from './components/TaskSummary'
 import TaskList from './components/TaskList'
 import TaskForm from './components/TaskForm'
+import ApuntesRapidos from './components/ApuntesRapidos'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
 import { useTareas } from './hooks/useTareas'
 import './App.css'
 
 function App() {
-  const { tareas, cargando, error, agregarTarea, completarTarea, editarTitulo, borrarTarea } =
-    useTareas()
+  const { tareas, cargando, error, agregarTarea, completarTarea, editarTitulo, borrarTarea } = useTareas()
 
   const [filtro, setFiltro] = useState('todas')
   const [textoBusqueda, setTextoBusqueda] = useState('')
   const [mostrarModal, setMostrarModal] = useState(false)
   const [tareaAEliminar, setTareaAEliminar] = useState(null)
-  const [nombreUsuario, setNombreUsuario] = useState('Estudiante')
+  const [nombre, setNombre] = useState('Isadora')
 
+  // filtra por estado y por texto al mismo tiempo
   const tareasFiltradas = tareas.filter((tarea) => {
     const coincideEstado =
       filtro === 'completadas' ? tarea.completed :
       filtro === 'pendientes' ? !tarea.completed :
       true
-    const coincideTexto = tarea.title
-      .toLowerCase()
-      .includes(textoBusqueda.toLowerCase())
+    const coincideTexto = tarea.title.toLowerCase().includes(textoBusqueda.toLowerCase())
     return coincideEstado && coincideTexto
   })
 
+  // actualiza el titulo de la pestaña segun cuantas tareas quedan pendientes
   useEffect(() => {
     const pendientes = tareas.filter((t) => !t.completed).length
-    document.title =
-      pendientes > 0 ? `TaskCampus (${pendientes} pendientes)` : 'TaskCampus'
+    document.title = pendientes > 0 ? `TaskCampus (${pendientes} pendientes)` : 'TaskCampus'
   }, [tareas])
 
   function pedirConfirmacion(id) {
@@ -56,12 +55,12 @@ function App() {
       <Header
         title="TaskCampus"
         description="Gestión de tareas académicas"
-        nombreUsuario={nombreUsuario}
+        nombreUsuario={nombre}
       />
 
       <button
         className="btn btn-secondary btn-cambiar-usuario"
-        onClick={() => setNombreUsuario('Estudiante Anónimo')}
+        onClick={() => setNombre('Estudiante Anonimo')}
       >
         Cambiar usuario
       </button>
@@ -83,11 +82,13 @@ function App() {
         onEditarTitulo={editarTitulo}
       />
 
+      <ApuntesRapidos />
+
       <Footer />
 
       {mostrarModal && (
         <Modal
-          mensaje="¿Estás seguro de que deseas eliminar esta tarea? Esta acción no se puede deshacer."
+          mensaje="¿Segura que quieres eliminar esta tarea?"
           onConfirmar={confirmarEliminar}
           onCancelar={cancelarEliminar}
         />
