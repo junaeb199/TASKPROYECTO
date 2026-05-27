@@ -8,6 +8,7 @@ import {
 } from '../services/tareasService'
 
 const CLAVE_LS = 'taskcampus-tareas'
+const VERSION_LS = 'taskcampus-v2'
 
 export function useTareas() {
   const [tareas, setTareas] = useState([])
@@ -16,6 +17,11 @@ export function useTareas() {
 
   // al montar: si ya habia tareas guardadas las cargo, sino voy a la api
   useEffect(() => {
+    // si hay datos de una version anterior los borramos para cargar los nuevos
+    if (!localStorage.getItem(VERSION_LS)) {
+      localStorage.removeItem(CLAVE_LS)
+      localStorage.setItem(VERSION_LS, '1')
+    }
     const guardadas = localStorage.getItem(CLAVE_LS)
     if (guardadas) {
       setTareas(JSON.parse(guardadas))
