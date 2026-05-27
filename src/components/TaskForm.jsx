@@ -16,13 +16,15 @@ function TaskForm({ onAgregarTarea }) {
     <Card>
       <h2 className="section-title">Nueva tarea</h2>
       <form className="task-form" onSubmit={manejarSubmit}>
-        <input
-          type="text"
-          placeholder="Escribe el título de la tarea..."
-          value={titulo}
-          onChange={(e) => setTitulo(e.target.value)}
-        />
-        <Button label="Agregar" variante="primary" icono="+" />
+        <div className="task-form-bar">
+          <input
+            type="text"
+            placeholder="Escribe el título de la tarea..."
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          />
+          <Button label="Agregar" variante="primary" icono="+" />
+        </div>
       </form>
     </Card>
   )
