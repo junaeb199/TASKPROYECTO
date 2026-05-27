@@ -58,12 +58,14 @@ function App() {
         nombreUsuario={nombre}
       />
 
-      <button
-        className="btn btn-secondary btn-cambiar-usuario"
-        onClick={() => setNombre('Estudiante Anonimo')}
-      >
-        Cambiar usuario
-      </button>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.75rem 2rem 0' }}>
+        <button
+          className="btn btn-secondary btn-sm"
+          onClick={() => setNombre('Estudiante Anonimo')}
+        >
+          Cambiar usuario
+        </button>
+      </div>
 
       <TaskForm onAgregarTarea={agregarTarea} />
 
