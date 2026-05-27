@@ -9,7 +9,7 @@ const FILTROS = [
   { valor: 'completadas', label: 'Completadas' },
 ]
 
-function TaskList({ tareas, cargando, error, filtro, setFiltro, onCompletar, onEliminar, onEditarTitulo }) {
+function TaskList({ tareas, cargando, error, filtro, setFiltro, textoBusqueda, setTextoBusqueda, onCompletar, onEliminar, onEditarTitulo }) {
   if (cargando) {
     return (
       <Card>
@@ -40,6 +40,14 @@ function TaskList({ tareas, cargando, error, filtro, setFiltro, onCompletar, onE
           />
         ))}
       </div>
+
+      <input
+        type="text"
+        className="task-search"
+        placeholder="Buscar tarea por título..."
+        value={textoBusqueda}
+        onChange={(e) => setTextoBusqueda(e.target.value)}
+      />
 
       {tareas.length === 0 ? (
         <EmptyState

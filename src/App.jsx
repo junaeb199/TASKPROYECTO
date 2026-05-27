@@ -13,14 +13,20 @@ function App() {
     useTareas()
 
   const [filtro, setFiltro] = useState('todas')
+  const [textoBusqueda, setTextoBusqueda] = useState('')
   const [mostrarModal, setMostrarModal] = useState(false)
   const [tareaAEliminar, setTareaAEliminar] = useState(null)
   const [nombreUsuario, setNombreUsuario] = useState('Estudiante')
 
   const tareasFiltradas = tareas.filter((tarea) => {
-    if (filtro === 'completadas') return tarea.completed
-    if (filtro === 'pendientes') return !tarea.completed
-    return true
+    const coincideEstado =
+      filtro === 'completadas' ? tarea.completed :
+      filtro === 'pendientes' ? !tarea.completed :
+      true
+    const coincideTexto = tarea.title
+      .toLowerCase()
+      .includes(textoBusqueda.toLowerCase())
+    return coincideEstado && coincideTexto
   })
 
   useEffect(() => {
@@ -70,6 +76,8 @@ function App() {
         error={error}
         filtro={filtro}
         setFiltro={setFiltro}
+        textoBusqueda={textoBusqueda}
+        setTextoBusqueda={setTextoBusqueda}
         onCompletar={completarTarea}
         onEliminar={pedirConfirmacion}
         onEditarTitulo={editarTitulo}
