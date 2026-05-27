@@ -61,11 +61,13 @@ function TaskItem({ tarea, onCompletar, onEliminar, onEditarTitulo }) {
         <Button
           label={tarea.completed ? 'Reabrir' : 'Completar'}
           variante={tarea.completed ? 'secondary' : 'success'}
+          icono={tarea.completed ? '↩' : '✓'}
           onClick={() => onCompletar(tarea.id)}
         />
         <Button
           label="Eliminar"
           variante="danger"
+          icono="✕"
           onClick={() => onEliminar(tarea.id)}
         />
       </div>
