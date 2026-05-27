@@ -1,0 +1,493 @@
+/* ===================================================
+   Reset y base
+   =================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  background-color: #e8f0fe;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* ===================================================
+   Contenedor principal de la app
+   =================================================== */
+.app-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ===================================================
+   Header
+   =================================================== */
+.header {
+  text-align: center;
+  padding: 1.5rem 0 1.25rem;
+  border-bottom: 2px solid #bfdbfe;
+  margin-bottom: 1.5rem;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  letter-spacing: -0.5px;
+}
+
+.header-description {
+  color: #64748b;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.header-user {
+  color: #3b82f6;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ===================================================
+   Card genérico
+   =================================================== */
+.card {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ===================================================
+   Títulos de sección
+   =================================================== */
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+/* ===================================================
+   Resumen (TaskSummary)
+   =================================================== */
+.summary-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.summary-stats p {
+  font-size: 0.9rem;
+  color: #1e40af;
+  background-color: #dbeafe;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* ===================================================
+   Formulario de nueva tarea
+   =================================================== */
+.task-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.55rem 0.85rem;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.task-form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ===================================================
+   Botones de filtro
+   =================================================== */
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ===================================================
+   Lista de tareas
+   =================================================== */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===================================================
+   Ítem de tarea
+   =================================================== */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+  gap: 1rem;
+}
+
+.task-item:hover {
+  background-color: #f8faff;
+}
+
+.task-item.completada {
+  opacity: 0.7;
+}
+
+.task-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 0.95rem;
+  color: #1e293b;
+  word-break: break-word;
+  cursor: default;
+}
+
+.task-title.tachado {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.task-input-edicion {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.95rem;
+  border: 1.5px solid #2563eb;
+  border-radius: 4px;
+  outline: none;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   Botón reutilizable (Button component)
+   =================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.42rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.83rem;
+  font-weight: 500;
+  transition: opacity 0.15s, background-color 0.15s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: #e0e7ff;
+  color: #1d4ed8;
+}
+
+.btn-success {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1.5px solid #93c5fd;
+  color: #2563eb;
+}
+
+.btn-active {
+  background-color: #1d4ed8;
+  color: #ffffff;
+}
+
+.btn-icono {
+  font-size: 0.9rem;
+}
+
+.btn-cambiar-usuario {
+  display: block;
+  margin: 0 auto 1.25rem;
+  font-size: 0.8rem;
+}
+
+/* ===================================================
+   Badge de estado
+   =================================================== */
+.badge {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.badge-pendiente {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-completada {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-en-progreso {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* ===================================================
+   Estado vacío (EmptyState)
+   =================================================== */
+.empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ===================================================
+   Modal de confirmación
+   =================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.modal h3 {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+}
+
+.modal p {
+  color: #475569;
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* ===================================================
+   Estados de carga y error
+   =================================================== */
+.loading-text {
+  text-align: center;
+  padding: 2rem;
+  color: #3b82f6;
+  font-style: italic;
+}
+
+.error-text {
+  text-align: center;
+  padding: 1rem;
+  color: #dc2626;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+}
+
+/* ===================================================
+   Reloj en el header
+   =================================================== */
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reloj {
+  font-size: 0.88rem;
+  color: #3b82f6;
+  background-color: #dbeafe;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+/* ===================================================
+   Buscador de tareas
+   =================================================== */
+.task-search {
+  width: 100%;
+  padding: 0.5rem 0.85rem;
+  margin-bottom: 0.85rem;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.task-search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ===================================================
+   Apuntes rapidos
+   =================================================== */
+.apuntes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.apuntes-header .section-title {
+  margin-bottom: 0;
+}
+
+.apuntes-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  background-color: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 100px;
+}
+
+.apuntes-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.apuntes-hint {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+}
+
+/* ===================================================
+   Footer
+   =================================================== */
+.footer {
+  text-align: center;
+  padding: 1.25rem 0 0;
+  margin-top: 0.5rem;
+  border-top: 1px solid #bfdbfe;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+
+/* ===================================================
+   Responsive básico
+   =================================================== */
+@media (max-width: 600px) {
+  .app-container {
+    margin: 0;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .task-actions {
+    flex-wrap: wrap;
+  }
+
+  .summary-stats {
+    gap: 0.75rem;
+  }
+}
